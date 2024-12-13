@@ -5,19 +5,10 @@ a square box with grooves for the black squares.
 
 ## Requirements
 
-The recommended way to install the requirements is to use a virtual environment:
+The recommended way to install the requirements is with pixi:
 
 ```bash
-python3 -m venv aruco_3d_env
-source aruco_3d_env/bin/activate
-python3 -m pip install --upgrade pip  # cadquery requires pip upgrade
-pip install -r requirements.txt
-```
-
-In Ubuntu you have to defer to the system package manager for the following packages:
-
-```bash
-export FONTCONFIG_FILE=/etc/fonts/fonts.conf
+curl -fsSL https://pixi.sh/install.sh | bash
 ```
 
 ## Usage
@@ -26,13 +17,7 @@ To generate an STL file of an aruco marker, run the following command,
 and you will be prompted for the marker properties (marker ID, marker size, etc.):
 
 ```bash
-python3 generate_aruco.py
-```
-
-for CLI options, run:
-
-```bash
-python3 generate_aruco.py --help
+pixi r make_aruco
 ```
 
 ## Example
@@ -53,7 +38,7 @@ Lets generate an aruco marker with the following properties:
 Here is the CLI interaction:
 
 ```bash
-$ python3 generate_aruco.py
+$ pixi r make_aruco
 Enter the total side length (marker+margin) (mm) (q to exit): 90
 Enter the white margin width (mm) (q to exit): 10
 Enter the marker thikness (mm) (q to exit): 1
@@ -97,7 +82,7 @@ ArUco Marker 0:
 Or enter them as CLI arguments:
 
 ```bash
-$ python3 generate_aruco.py --box_side 90 --marker_margin 10 --box_thickness 1 --marker_groove_depth 0.4 --aruco_dictionary DICT_4X4_50 --marker_id 1
+$ pixi r make_aruco --box_side 90 --marker_margin 10 --box_thickness 1 --marker_groove_depth 0.4 --aruco_dictionary DICT_4X4_50 --marker_id 1
 Aruco Dictionary: DICT_4X4_50
 ArUco Marker 0:
 ████████████████
